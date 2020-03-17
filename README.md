@@ -1,3 +1,3 @@
 # Hstays - PMS
 
-Draft para tabelas d edados de faturação
+Draft para tabelas de dados de faturação
