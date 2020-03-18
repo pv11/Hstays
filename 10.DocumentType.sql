@@ -9,7 +9,7 @@ create table DocumentType(
 
 	IsFiscal				bit not null default 1,
 
-	FiscalCode				varchar(50) not null default '',	-- example: FR
+	FiscalCode				varchar(50) not null default '',	-- example: RF
 	FiscalSerialNumber		varchar(50) not null default '',	-- example: 2020100
 																-- example of full invoice number: FR 2020100/123456
 	StartingCounter			bigint not null default 0,
@@ -25,7 +25,7 @@ create table DocumentType(
 	IsPaymentReceipt		bit not null default 0,
 
 	IsActive				bit not null default 1,
-	IsCloded				bit not null default 0,
+	IsClosed				bit not null default 0,
 	CloseDate				datetime null,
 
 	Notes					nvarchar(100),
