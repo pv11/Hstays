@@ -20,6 +20,8 @@ create table DocumentType(
 	IsManual				bit not null default 0,				-- special document typ for invoice recovery (manual input after data loss)		
 	ManualSufix				varchar(50) null,
 
+	Modules					int not null default 0,											-- bitmask flag to allow or not this Item on each software module; 1=PMS; 2=POS; 4=EMS; 8=Other
+
 	IsDeposit				bit not null default 0,
 	IsWorkingDocument		bit not null default 0,				-- conference documents (statement, "consulta de mesa", etc)
 	IsPaymentReceipt		bit not null default 0,

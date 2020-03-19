@@ -11,15 +11,15 @@ create table DocumentHeader(
 	Housetype_Id			int null,
 
 	DocumentType_Id			int references DocumentType(id),
-	DocumentNumber			bigint,
+	DocumentNumber			bigint,									-- 12345678
+	DocumentNumberFormatted varchar(100) null,						-- FR 2020100/12345678
 
 	DocumentDate			date,
 	
 	IsMaster				bit not null default 0,					-- in a group, this is the "common" folio for all rooms
 	IsClosed				bit not null default 0,
 
-	DocumentNumberFormatted varchar(100) null,
-	GrossTotal				decimal(10,9),
+	GrossTotal				decimal(10,9),							-- import to calculate document Hash
 
 	InfoText				varchar(100) null,
 	InfoNumberOfRooms		int null,								-- useful for group reservations
