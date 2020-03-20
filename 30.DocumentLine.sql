@@ -6,7 +6,7 @@ create table DocumentLine(
 
 	DocumentHeader_Id			int not null references DocumentHeader(id),		-- this transaction belongs to the document
 	
-	Item_Id						int not null references,									-- a charge, a payment, etc. 
+	Item_Id						int not null references TransactionItem(id),									-- a charge, a payment, etc. 
 	Package_Id					int     null,							-- if any
 
 	Quantity					decimal(19,4),
@@ -22,7 +22,7 @@ create table DocumentLine(
 	CurrentBusinessDate			date,											-- the business date of the moment this transaction as created
 	
 	TaxAmount					decimal(19,4),									-- reason to have this here: tax percentage can change in the future; let's keep the exact value for the TransactionDate
-	Tax_Id						int null,										-- not all transactions have tax
+	Tax_Id						int	null references Tax(id),					-- not all transactions have tax
 	TaxPercentage				decimal(19,4) null,								-- if any
 	TaxExemption_Id				int null,										-- if any
 
@@ -57,8 +57,8 @@ create table DocumentLine(
 	RedirectedFromDocument_Id	int null references DocumentHeader(id),			-- the intended folio; due to a "billing instruction", the transaction was automatically posted in "DocumentHeader_Id"  instead of "RedirectedFromDocument_Id"
 	
 
-	[CreatedByUserId]			int not null references T_USER(id),
-	[CreatedByCashboxId]		int not null references T_CASHBOX(id),
+	[CreatedByUserId]			int  null ,
+	[CreatedByCashboxId]		int  null ,
 	[CreatedOn]					datetime default getdate()
 	
 )

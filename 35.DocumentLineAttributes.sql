@@ -26,6 +26,7 @@ create table DocumentLineAttributes(
 	TaxAccount2					varchar(50),
 	TaxAccount3					varchar(50),
 
+	IsValid						bit not null default 1,    -- in case of multiple records (histrory, etc) for teh same DocumentLine_Id, only 1 can be valid
 
 	[CreatedByUserId]			int not null references T_USER(id),
 	
