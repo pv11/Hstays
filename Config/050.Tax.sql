@@ -1,4 +1,4 @@
--- drop table Tax
+-- drop table TaxDetail; drop table Tax
 
 if object_id('Tax') is null
 create table Tax(
@@ -8,14 +8,14 @@ create table Tax(
 	Code						nvarchar(100) not null, 
 	Description					nvarchar(100) not null,
 
-	ValidForCountryCode			varchar(10) not null,					-- country code (Alpha-3)
+	ValidForCountryCode			varchar(10) not null,					-- country code (Alpha-2)
 	
 	SortOrder					int not null default 100,
 	Notes						varchar(max) null,
 	IsActive					bit not null default 1,
 	Deleted						bit not null default 0,
 
-	SaftCode					varchar(20) null,
+	SaftCode					varchar(20) null,							
 
 	[CreatedByUserId]			int  null ,
 	[UpdatedByUserId]			int  null ,
@@ -28,11 +28,13 @@ create table Tax(
 
 if not exists(select * from Tax)
  begin
-	insert into Tax (HotelId,Code,Description,ValidForCountryCode,SaftCode)
-	values ('D348E3AF-D306-41D6-AB7F-840B1BC96819', 'ISE', 'Isento', 'PT','ISE'),
-	       ('D348E3AF-D306-41D6-AB7F-840B1BC96819', 'RED', 'Reduzido', 'PT','RED'),
-	       ('D348E3AF-D306-41D6-AB7F-840B1BC96819', 'INT', 'Intermédio', 'PT','INT'),
-		   ('D348E3AF-D306-41D6-AB7F-840B1BC96819', 'NOR', 'Normal', 'PT','NOR')
+	insert into Tax (HotelId,Code,Description,ValidForCountryCode,SaftCode,Notes)
+	values ('D348E3AF-D306-41D6-AB7F-840B1BC96819', 'ISE', 'Isento', 'PT','ISE',''),
+	       ('D348E3AF-D306-41D6-AB7F-840B1BC96819', 'RED', 'Reduzido', 'PT','RED','Contiente'),
+		   ('D348E3AF-D306-41D6-AB7F-840B1BC96819', 'RED-RAM', 'Reduzido', 'PT','RED','Região Autónoma da Madeira'),
+		   ('D348E3AF-D306-41D6-AB7F-840B1BC96819', 'RED-RAA', 'Reduzido', 'PT','RED','Região Autónoma dos Açores'),
+	       ('D348E3AF-D306-41D6-AB7F-840B1BC96819', 'INT', 'Intermédio', 'PT','INT',''),
+		   ('D348E3AF-D306-41D6-AB7F-840B1BC96819', 'NOR', 'Normal', 'PT','NOR','')
  end
 
  select * from Tax
