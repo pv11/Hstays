@@ -15,7 +15,7 @@ create table TransactionItem(
 	Modules						int not null default 1,											-- bitmask flag to allow or not this Item on each software module; 1=PMS; 2=POS; 4=EMS; 8=Other
 	
 	DefaultPrice				decimal(19,4) null,
-	DefaultTExExemption_id		int null,
+	DefaultTaxExemption_id		int null,
 
 	SortOrder					int not null default 100,
 	Notes						varchar(max) null,
